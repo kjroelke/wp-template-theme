@@ -8,10 +8,10 @@ module.exports = {
 	...defaultConfig,
 	...{
 		entry: {
-			global: './src/index.js',
+			global: './wp-content/themes/starter-theme/src/index.js',
 		},
 		output: {
-			path: __dirname + '/dist',
+			path: __dirname + '/wp-content/themes/starter-theme/dist',
 			filename: '[name].js',
 		},
 	},
