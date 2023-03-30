@@ -8,7 +8,6 @@
  */
 
 $content = new ContentSectionComponents();
-// $hero_fields = get_field('hero');
 
 get_header(); ?>
 <main class="site-content">

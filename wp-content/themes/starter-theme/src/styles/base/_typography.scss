@@ -1,0 +1,72 @@
+@use '../abstracts/variables' as v;
+@import url(https://use.typekit.net/jky5sek.css);
+
+body {
+	color: v.$color-black;
+	font-family: v.$font-body;
+
+	a {
+		text-decoration: none;
+	}
+	.text-content {
+		font-family: v.$font-body;
+		font-size: 1.35em;
+	}
+	p {
+		@extend .text-content;
+	}
+	li {
+		@extend .text-content;
+	}
+	.small,
+	small {
+		font-family: v.$font-body;
+	}
+}
+
+%heading {
+	font-family: v.$font-headings;
+	font-weight: 600;
+}
+h1,
+.h1 {
+	@extend %heading;
+	font-size: 4em;
+	text-transform: uppercase;
+}
+
+h2,
+.h2 {
+	@extend %heading;
+	font-size: 3em;
+	text-transform: uppercase;
+}
+
+h3,
+.h3 {
+	@extend %heading;
+	font-size: 2.4em;
+	text-transform: capitalize;
+}
+
+h4,
+.h4 {
+	@extend %heading;
+	font-size: 1.75em;
+}
+
+h5,
+.h5,
+h6,
+.h6 {
+	@extend %heading;
+}
+
+%subheadline {
+	font-family: v.$font-headings;
+	font-weight: 400;
+	font-size: 1.35em;
+}
+.subheadline {
+	@extend %subheadline;
+}
