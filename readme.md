@@ -24,6 +24,10 @@ Happy Editing!
 
 # Changelog
 
+## v1.1.1
+
+Minor bug fixes & additional templating
+
 ## v1.1
 
 ### Updated SCSS Styles:
