@@ -24,6 +24,62 @@ Happy Editing!
 
 # Changelog
 
+## v1.2
+
+A better Webpack!
+
+New entry function to programmatically generate files. All you have to do is add a snake-case string to the proper array!
+
+```js
+const THEME_NAME = 'starter-theme';
+const THEME_DIR = `/wp-content/themes/${THEME_NAME}/src`;
+
+function snakeToCamel(str) {
+return str.replace(/([-\_][a-z])/g, (group) =>
+group.toUpperCase().replace('-', '').replace('\_', ''),
+);
+}
+
+/**
+* For JSX folders (located `~/src/js/folder-name/App.jsx)`)
+* Array of strings modeled after folder names (e.g. 'about-choctaw')
+*/
+const appNames = [];
+
+/**
+ * For SCSS files (no leading `_`)
+ * Array of strings modeled after scss names (e.g. 'we-are-choctaw')
+ */
+const styleSheets = []; // for scss only
+
+module.exports = {
+	...defaultConfig,
+	...{
+		entry: function () {
+			const entries = {
+				global: `.${THEME_DIR}/index.js`,
+			};
+    		if (appNames.length > 0) {
+    			appNames.forEach((appName) => {
+    				const appNameOutput = snakeToCamel(appName);
+    				entries[
+    					appNameOutput
+    				] = `.${THEME_DIR}/js/${appName}/App.jsx`;
+    			});
+    		}
+    		if (styleSheets.length > 0) {
+    			styleSheets.forEach((styleSheet) => {
+    				const styleSheetOutput = snakeToCamel(styleSheet);
+    				entries[
+    					styleSheetOutput
+    				] = `.${THEME_DIR}/styles/pages/${styleSheet}.scss`;
+    			});
+    		}
+    		return entries;
+    	},
+    },
+```
+
 ## v1.1.1
 
 Minor bug fixes & additional templating
@@ -50,3 +106,7 @@ Minor bug fixes & additional templating
 
 -   `remove_wordpress_styles()` method accepts an array of `$handles` to remove (i.e. `classic-theme-styles`,`wp-block-library`,`dashicons`, etc.)
 -   `enqueue_page_assets()` (and dependent methods) added to enqueue js/scss assets _per page_ (so we can only call the assets we need when we need them) with a simple script
+
+```
+
+```
