@@ -3,7 +3,7 @@ const path = require('path');
 const defaultConfig = require('@wordpress/scripts/config/webpack.config.js');
 
 const THEME_NAME = 'starter-theme';
-const THEME_DIR = `/wp-content/themes/${THEME_NAME}/src`;
+const THEME_DIR = `/wp-content/themes/${THEME_NAME}`;
 
 function snakeToCamel(str) {
 	return str.replace(/([-_][a-z])/g, (group) =>
@@ -28,7 +28,7 @@ module.exports = {
 	...{
 		entry: function () {
 			const entries = {
-				global: `.${THEME_DIR}/index.js`,
+				global: `.${THEME_DIR}/src/index.js`,
 			};
 
 			if (appNames.length > 0) {
@@ -36,7 +36,7 @@ module.exports = {
 					const appNameOutput = snakeToCamel(appName);
 					entries[
 						appNameOutput
-					] = `.${THEME_DIR}/js/${appName}/App.jsx`;
+					] = `.${THEME_DIR}/src/js/${appName}/App.jsx`;
 				});
 			}
 			if (styleSheets.length > 0) {
@@ -44,7 +44,7 @@ module.exports = {
 					const styleSheetOutput = snakeToCamel(styleSheet);
 					entries[
 						styleSheetOutput
-					] = `.${THEME_DIR}/styles/pages/${styleSheet}.scss`;
+					] = `.${THEME_DIR}/src/styles/pages/${styleSheet}.scss`;
 				});
 			}
 			return entries;
