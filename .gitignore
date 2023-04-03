@@ -35,6 +35,7 @@ auth.json
 /wp-content/uploads/
 /wp-content/upgrade/
 /wp-content/plugins
+/wp-content/mu-plugins
 /wp-content/themes/twenty*/
 
 
